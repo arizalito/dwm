@@ -7,7 +7,7 @@ static const unsigned int gappx[]   = { 20 };   /* default gap between windows i
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=12" };
+static const char *fonts[]          = { "monospace:size=12", "Source Han Sans SC:size=11" };
 static const char dmenufont[]       = "monospace:size=12";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -31,14 +31,10 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
-const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "lf", NULL };
-const char *spcmd3[] = {"keepassxc", NULL };
+const char *spcmd1[] = {"tabbed", "-n", "sptab", "-g", "1500x900", "-r", "2", "-c", "st", "-w", "''", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
-	{"spterm",      spcmd1},
-	{"splf",        spcmd2},
-	{"keepassxc",   spcmd3},
+	{"sptab",       spcmd1},
 };
 
 /* tagging */
@@ -49,11 +45,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",	  NULL,			NULL,		0,				1,			 -1 },
-	{ "Firefox",  NULL,			NULL,		1 << 8,			0,			 -1 },
-	{ NULL,		  "spterm",		NULL,		SPTAG(0),		1,			 -1 },
-	{ NULL,		  "spfm",		NULL,		SPTAG(1),		1,			 -1 },
-	{ NULL,		  "keepassxc",	NULL,		SPTAG(2),		0,			 -1 },
+	{ NULL,		"sptab",	NULL,	SPTAG(0),	1,	 -1 },
 };
 
 /* layout(s) */
@@ -112,8 +104,6 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY,            		XK_grave,  togglescratch,  {.ui = 0 } },
-	{ MODKEY,            		XK_y,	   togglescratch,  {.ui = 1 } },
-	{ MODKEY,            		XK_u,	   togglescratch,  {.ui = 2 } },
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -5 } },
 	{ MODKEY,                       XK_equal,  setgaps,        {.i = +5 } },
 	{ MODKEY|ShiftMask,             XK_minus,  setgaps,        {.i = GAP_RESET } },
