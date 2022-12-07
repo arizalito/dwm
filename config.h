@@ -32,9 +32,11 @@ typedef struct {
 	const void *cmd;
 } Sp;
 const char *spcmd1[] = {"tabbed", "-n", "sptab", "-g", "1500x900", "-r", "2", "-c", "st", "-w", "''", NULL };
+const char *spcmd2[] = {"emacs", "--name", "spemacs", "-g", "220x60", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"sptab",       spcmd1},
+	{"sa",          spcmd2},
 };
 
 /* tagging */
@@ -46,6 +48,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ NULL,		"sptab",	NULL,	SPTAG(0),	1,	 -1 },
+	{ NULL,		"spemacs",	NULL,	SPTAG(1),	1,	 -1 },
 };
 
 /* layout(s) */
@@ -103,7 +106,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,            		XK_grave,  togglescratch,  {.ui = 0 } },
+	{ MODKEY,                       XK_grave,  togglescratch,  {.ui = 0 } },
+	{ MODKEY,                       XK_y,      togglescratch,  {.ui = 1 } },
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -5 } },
 	{ MODKEY,                       XK_equal,  setgaps,        {.i = +5 } },
 	{ MODKEY|ShiftMask,             XK_minus,  setgaps,        {.i = GAP_RESET } },
