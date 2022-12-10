@@ -7,7 +7,7 @@ static const unsigned int gappx[]   = { 20 };   /* default gap between windows i
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=12", "Source Han Sans SC:size=11" };
+static const char *fonts[]          = { "monospace:size=12", "Source Han Sans CN:size=11" };
 static const char dmenufont[]       = "monospace:size=12";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -32,7 +32,7 @@ typedef struct {
 	const void *cmd;
 } Sp;
 const char *spcmd1[] = {"tabbed", "-n", "sptab", "-g", "1500x900", "-r", "2", "-c", "st", "-w", "''", NULL };
-const char *spcmd2[] = {"emacs", "--name", "spemacs", "-g", "220x60", NULL };
+const char *spcmd2[] = {"emacs", "--name", "spemacs", "-g", "185x53", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"sptab",       spcmd1},
