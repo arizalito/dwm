@@ -32,7 +32,7 @@ typedef struct {
 	const void *cmd;
 } Sp;
 const char *spcmd1[] = {"tabbed", "-n", "sptab", "-g", "1500x900", "-r", "2", "-c", "st", "-w", "''", NULL };
-const char *spcmd2[] = {"emacs", "--name", "spemacs", "-g", "185x53", NULL };
+const char *spcmd2[] = {"emacs", "--name", "spemacs", "-g", "165x45", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"sptab",       spcmd1},
